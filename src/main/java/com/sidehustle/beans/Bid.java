@@ -16,8 +16,8 @@ public class Bid {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="BID")
-	private int bid;
+	@Column(name="ID")
+	private int id;
 	
 	@Column(name="BTITLE")
 	private String btitle;
@@ -63,13 +63,13 @@ public class Bid {
 	
 	@Override
 	public String toString() {
-		return "Bid [bid=" + bid + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + "]";
+		return "Bid [bid=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + "]";
 	}
 	public int getBid() {
-		return bid;
+		return id;
 	}
-	public void setBid(int bid) {
-		this.bid = bid;
+	public void setBid(int id) {
+		this.id = id;
 	}
 	public String getBtitle() {
 		return btitle;
