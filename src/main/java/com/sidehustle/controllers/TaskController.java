@@ -37,7 +37,7 @@ public class TaskController {
 		return repository.findAll();
 	}
 	
-	// Task Details for 1 task
+	//Task Details for 1 task
 	@GetMapping(value = "/tasks/task/{t_id}")
 	public Task getTaskDetailById(@PathVariable int t_id) {
 		Optional <Task> opt = repository.findById(t_id);
@@ -50,9 +50,9 @@ public class TaskController {
 	}
 	
 	// Tasks for a user
-	@GetMapping(value = "/tasks/{userId}")
-	public List<Task> searchByUserId(@PathVariable int userId){
-		return repository.findByUserUid(userId);
+	@GetMapping(value = "/tasks/{uid}")
+	public List<Task> searchByUserId(@PathVariable int uid){
+		return repository.findByUserUid(uid);
 	}
 
 	
