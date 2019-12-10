@@ -63,14 +63,17 @@ public class Bid {
 	
 	@Override
 	public String toString() {
-		return "Bid [bid=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + "]";
+		return "Bid [id=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + "]";
 	}
-	public int getBid() {
+	public int getId() {
 		return id;
 	}
-	public void setBid(int id) {
+
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getBtitle() {
 		return btitle;
 	}
