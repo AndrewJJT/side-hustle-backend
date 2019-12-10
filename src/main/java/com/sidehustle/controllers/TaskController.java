@@ -51,8 +51,8 @@ public class TaskController {
 	
 	// Tasks for a user
 	@GetMapping(value = "/tasks/{u_id}")
-	public List<Task> searchByUserId(@PathVariable int u_id){
-		return repository.findAllByU_ID(u_id);
+	public List<Task> searchByUserId(@PathVariable int uid){
+		return repository.findByUserUid(uid);
 	}
 
 	

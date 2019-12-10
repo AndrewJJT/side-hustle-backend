@@ -18,24 +18,24 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="U_ID")
-	private int u_id;
+	@Column(name="UID")
+	private int uid;
 	
 	@NotEmpty
-	@Column(name="U_USERNAME")
-	private String u_username;
+	@Column(name="UUSERNAME")
+	private String uusername;
 	
 	@NotEmpty
-	@Column(name="U_FN")
-	private String u_fn;
+	@Column(name="UFN")
+	private String ufn;
 	
 	@NotEmpty
-	@Column(name="U_LN")
-	private String u_ln;
+	@Column(name="ULN")
+	private String uln;
 	
 	@NotEmpty
-	@Column(name="U_PASSWORD")
-	private String u_password;
+	@Column(name="UPASSWORD")
+	private String upassword;
 	
 	@OneToMany(mappedBy = "user")
 	private Set<Task> tasks;
@@ -50,68 +50,68 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [u_id=" + u_id + ", u_username=" + u_username + ", u_fn=" + u_fn + ", u_ln=" + u_ln
-				+ ", u_password=" + u_password + "]";
+		return "User [uid=" + uid + ", uusername=" + uusername + ", ufn=" + ufn + ", uln=" + uln
+				+ ", upassword=" + upassword + "]";
 	}
 
 
 
-	public int getU_id() {
-		return u_id;
+	public int getUid() {
+		return uid;
 	}
 
 
 
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 
 
-	public String getU_username() {
-		return u_username;
+	public String getUusername() {
+		return uusername;
 	}
 
 
 
-	public void setU_username(String u_username) {
-		this.u_username = u_username;
+	public void setUusername(String uusername) {
+		this.uusername = uusername;
 	}
 
 
 
-	public String getU_fn() {
-		return u_fn;
+	public String getUfn() {
+		return ufn;
 	}
 
 
 
-	public void setU_fn(String u_fn) {
-		this.u_fn = u_fn;
+	public void setUfn(String ufn) {
+		this.ufn = ufn;
 	}
 
 
 
-	public String getU_ln() {
-		return u_ln;
+	public String getUln() {
+		return uln;
 	}
 
 
 
-	public void setU_ln(String u_ln) {
-		this.u_ln = u_ln;
+	public void setUln(String uln) {
+		this.uln = uln;
 	}
 
 
 
-	public String getU_password() {
-		return u_password;
+	public String getUpassword() {
+		return upassword;
 	}
 
 
 
-	public void setU_password(String u_password) {
-		this.u_password = u_password;
+	public void setUpassword(String upassword) {
+		this.upassword = upassword;
 	}
 
 }

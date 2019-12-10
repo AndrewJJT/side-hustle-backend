@@ -11,7 +11,7 @@ import com.sidehustle.beans.Task;
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
 
-	List<Task> findAllByU_ID(int u_id);
+	List<Task> findByUserUid(int uid);
 		
 	}
 
