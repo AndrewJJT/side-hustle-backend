@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "TASK")
 public class Task {
@@ -46,6 +48,7 @@ public class Task {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="UID")
 	private User user;
+	
 	
 	@OneToMany(mappedBy = "task")
 	private Set<Bid> bids;

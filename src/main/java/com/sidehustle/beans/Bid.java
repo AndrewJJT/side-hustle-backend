@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "BID")
 public class Bid {
@@ -51,6 +53,7 @@ public class Bid {
 	@JoinColumn(name="UID")
 	private User user;
 	
+	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="TID")
 	private Task task;
