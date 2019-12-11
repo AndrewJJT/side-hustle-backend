@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "TASK")
 public class Task {
@@ -43,11 +46,13 @@ public class Task {
 	@Column(name="TDURATION")
 	private double tduration;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="UID")
+	@JsonBackReference(value = "user-tasks")
 	private User user;
 	
 	@OneToMany(mappedBy = "task")
+	@JsonManagedReference(value = "task-bids")
 	private Set<Bid> bids;
 	
 	

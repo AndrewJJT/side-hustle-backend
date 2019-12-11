@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "BID")
 public class Bid {
@@ -49,10 +51,12 @@ public class Bid {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="UID")
+	@JsonBackReference(value = "user-bids")
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="TID")
+	@JsonBackReference(value = "task-bids")
 	private Task task;
 	
 	public Bid() {
