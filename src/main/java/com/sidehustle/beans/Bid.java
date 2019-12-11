@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "BID")
@@ -51,11 +52,13 @@ public class Bid {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="UID")
+	@JsonBackReference(value = "user-bids")
 	private User user;
 	
 	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="TID")
+	@JsonBackReference(value = "task-bids")
 	private Task task;
 	
 	public Bid() {
