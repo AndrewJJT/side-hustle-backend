@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.sidehustle.data.TaskRepository;
 import com.sidehustle.data.UserRepository;
 
 @RestController 
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*") // Spring 4.3
 public class UserController {
 
 	@Autowired
@@ -39,7 +41,6 @@ public class UserController {
 	// CREATE a task by an existing user
 	@PostMapping(value = "/users/{uid}/task", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Task save(@PathVariable int uid, @RequestBody Task task) throws InvalidConfigurationPropertyValueException {
-		
 		Optional<User> user = userRepo.findById(uid);
 		if (user.isPresent()) {	
 			task.setUser(user.get());

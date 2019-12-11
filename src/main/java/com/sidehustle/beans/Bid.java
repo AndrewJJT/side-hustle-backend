@@ -55,7 +55,7 @@ public class Bid {
 	@JsonBackReference(value = "user-bids")
 	private User user;
 	
-	@JsonManagedReference
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="TID")
 	@JsonBackReference(value = "task-bids")
