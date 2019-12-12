@@ -10,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 @Entity
@@ -43,6 +44,7 @@ public class User {
 	@JsonManagedReference(value = "user-tasks")
 	private Set<Task> tasks;
 	
+
 	@OneToMany(mappedBy = "user")
 	@JsonManagedReference(value = "user-bids")
 	private Set<Bid> bids;
@@ -54,8 +56,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", uusername=" + uusername + ", ufn=" + ufn + ", uln=" + uln
-				+ ", upassword=" + upassword + "]";
+		return "User [uid=" + uid + ", uusername=" + uusername + ", ufn=" + ufn + ", uln=" + uln + ", upassword="
+				+ upassword + ", tasks=" + tasks + ", bids=" + bids + "]";
 	}
 
 

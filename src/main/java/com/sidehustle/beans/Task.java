@@ -51,6 +51,7 @@ public class Task {
 	@JsonBackReference(value = "user-tasks")
 	private User user;
 	
+	
 	@OneToMany(mappedBy = "task")
 	@JsonManagedReference(value = "task-bids")
 	private Set<Bid> bids;
