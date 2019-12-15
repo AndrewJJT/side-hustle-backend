@@ -38,12 +38,14 @@ public class UserController {
 	//GET User by username and password 
 	@PostMapping(value = "/users")
 	public User login( @RequestBody User tempUser, HttpServletResponse resp) {
+		System.out.println("tempUser --------------->" + tempUser);
 		User user = userRepo.findByUusernameAndUpassword(tempUser.getUusername(), tempUser.getUpassword());
-		System.out.println(user);
+		System.out.println("--------------------------->>>>" + user);
 		if (user != null) {
 			System.out.println("in if statement" + user);
 			String userId = String.valueOf(user.getUid());
 			Cookie cookie = new Cookie("userid", userId);
+		
 			System.out.println(cookie);
 			resp.addCookie(cookie);
 		}
