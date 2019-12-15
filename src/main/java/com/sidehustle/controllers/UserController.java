@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException;
 import org.springframework.http.MediaType;
-
 import org.springframework.web.bind.annotation.CookieValue;
-
-
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -92,4 +90,5 @@ public class UserController {
 //			return repository.save(task);
 //		}).orElseThrow(() -> new ResourceAccessException("user is not found"));
 	}
+	
 }

@@ -5,17 +5,13 @@ import java.util.Optional;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sidehustle.beans.Task;
-import com.sidehustle.beans.User;
 import com.sidehustle.data.TaskRepository;
 import com.sidehustle.data.UserRepository;
 
@@ -48,6 +44,11 @@ public class TaskController {
 			else {
 				return new Task();//return null will result in someone having to handle errors
 			}
+	}
+	
+	@DeleteMapping(value = "/tasks/task/{t_id}")
+	public void RemoveTaskById(@PathVariable int t_id) {
+		repository.deleteById(t_id);
 	}
 	
 //	// GET Tasks for One User based on User id
