@@ -160,8 +160,7 @@ public class Task {
 	@Override
 	public String toString() {
 		return "Task [tid=" + tid + ", ttitle=" + ttitle + ", tdesc=" + tdesc + ", tstreet=" + tstreet
-				+ ", tcity=" + tcity + ", tstate=" + tstate + ", tprice=" + tprice + ", tduration=" + tduration
-				+ ", user=" + user + "]";
+				+ ", tcity=" + tcity + ", tstate=" + tstate + ", tprice=" + tprice + ", tduration=" + tduration;
 	}
 
 
