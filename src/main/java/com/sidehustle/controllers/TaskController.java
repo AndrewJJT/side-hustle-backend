@@ -51,32 +51,4 @@ public class TaskController {
 		repository.deleteById(t_id);
 	}
 	
-//	// GET Tasks for One User based on User id
-//	//TODO Probably don't need this, just do get user by id in user controller
-//	@GetMapping(value = "/tasks/user/{uid}")
-//	public List<Task> searchByUserId(@PathVariable int uid){
-//		return repository.findByUserUid(uid);
-//	}
-
-//	// CREATE a task by an existing user
-	// tasks/task
-	//
-//	@PostMapping(value = "/users/{uid}/task", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public Task save(@PathVariable int uid, @RequestBody Task task) throws InvalidConfigurationPropertyValueException {
-//		log.info(task);
-//		Optional<User> user = userRepo.findById(uid);
-//		if (user.isPresent()) {	
-//			task.setUser(user.get());
-//			return repository.save(task);
-//		}else {
-//			return new Task();
-//		}
-//		
-////		return userRepo.findById(uid).map(user -> {
-////			task.setUser(user);
-////			return repository.save(task);
-////		}).orElseThrow(() -> new ResourceAccessException("user is not found"));
-//	}
-	
-
 }
