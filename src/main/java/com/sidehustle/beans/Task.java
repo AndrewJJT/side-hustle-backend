@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -40,6 +41,7 @@ public class Task {
 	@Column(name="TSTATE")
 	private String tstate;
 	
+	@Min(0)
 	@Column(name="TPRICE")
 	private double tprice;
 	

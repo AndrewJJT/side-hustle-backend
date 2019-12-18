@@ -4,13 +4,12 @@ import java.util.Optional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,19 +49,7 @@ public class UserController {
 		return user;
 	}
 	
-	//GET User info by Session 
-	@GetMapping(value = "/users/detail")
-	public User getUserInfoBySession( @CookieValue(value = "userid") String userid ) {
-		int id = Integer.valueOf(userid);
-		Optional<User> user= userRepo.findById(id);
-		if(user.isPresent()) {
-			return user.get();
-		}else {
-			return new User();
-		}
-		
-	}
-	
+
 	//GET User info - tasks and bids 
 	@GetMapping(value = "/users/{id}")
 	public User getUserInfo(@PathVariable int id) {
@@ -76,7 +63,7 @@ public class UserController {
 	
 	// CREATE a task by an existing user
 	@PostMapping(value = "/users/{uid}/task", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Task save(@PathVariable int uid, @RequestBody Task task) throws InvalidConfigurationPropertyValueException {
+	public Task save(@PathVariable int uid, @Valid @RequestBody Task task) {
 		Optional<User> user = userRepo.findById(uid);
 		if (user.isPresent()) {	
 			task.setUser(user.get());
