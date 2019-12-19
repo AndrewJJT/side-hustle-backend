@@ -1,5 +1,6 @@
 package com.sidehustle.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,30 +11,70 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "BID")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Bid {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="B_ID")
-	private int b_id;
+	@Column(name="ID")
+	private int id;
 	
-	@Column(name="B_TITLE")
-	private String b_title;
+	@Column(name="BTITLE")
+	private String btitle;
 	
-	@Column(name="B_DESC")
-	private String b_desc;
+	@Column(name="BDESC")
+	private String bdesc;
 	
-	@Column(name="B_PRICE")
-	private double b_price;
+	@Column(name="BPRICE")
+	private double bprice;
+	
+	@Column(name="BAPPROVED")
+	private boolean bapproved;
+	
+	public boolean getBapproved() {
+		return bapproved;
+	}
+
+
+	public void setBapproved(boolean bapproved) {
+		this.bapproved = bapproved;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Task getTask() {
+		return task;
+	}
+
+
+	public void setTask(Task task) {
+		this.task = task;
+	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="U_ID")
+	@JoinColumn(name="UID")
+	@JsonBackReference(value = "user-bids")
 	private User user;
 	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="T_ID")
+	@JoinColumn(name="TID")
+	@JsonBackReference(value = "task-bids")
 	private Task task;
 	
 	public Bid() {
@@ -44,31 +85,35 @@ public class Bid {
 	
 	@Override
 	public String toString() {
-		return "Bid [b_id=" + b_id + ", b_title=" + b_title + ", b_desc=" + b_desc + ", b_price=" + b_price + "]";
+		return "Bid [id=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + ", bapproved="
+				+ bapproved + "]";
 	}
-	public int getB_id() {
-		return b_id;
+	public int getId() {
+		return id;
 	}
-	public void setB_id(int b_id) {
-		this.b_id = b_id;
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getB_title() {
-		return b_title;
+
+	public String getBtitle() {
+		return btitle;
 	}
-	public void setB_title(String b_title) {
-		this.b_title = b_title;
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
 	}
-	public String getB_desc() {
-		return b_desc;
+	public String getBdesc() {
+		return bdesc;
 	}
-	public void setB_desc(String b_desc) {
-		this.b_desc = b_desc;
+	public void setBdesc(String bdesc) {
+		this.bdesc = bdesc;
 	}
-	public double getB_price() {
-		return b_price;
+	public double getBprice() {
+		return bprice;
 	}
-	public void setB_price(double b_price) {
-		this.b_price = b_price;
+	public void setBprice(double bprice) {
+		this.bprice = bprice;
 	}
 
 	

@@ -2,6 +2,7 @@ package com.sidehustle.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,42 +13,58 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "TASK")
 public class Task {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="T_ID")
-	private int t_id;
+	@Column(name="TID")
+	private int tid;
 	
-	@Column(name="T_TITLE")
-	private String t_title;
+	@NotBlank(message = "Job task must have a title!")
+	@Column(name="TTITLE")
+	private String ttitle;
 	
-	@Column(name="T_DESC")
-	private String t_desc;
+	@NotBlank(message = "Job task must have a description!")
+	@Column(name="TDESC")
+	private String tdesc;
 	
-	@Column(name="T_STREET")
-	private String t_street;
+	@Column(name="TSTREET")
+	private String tstreet;
 	
-	@Column(name = "T_CITY")
-	private String t_city;
+	@NotBlank(message = "City field is required!")
+	@Column(name = "TCITY")
+	private String tcity;
 	
-	@Column(name="T_STATE")
-	private String t_state;
+	@NotBlank(message = "State field is required!")
+	@Column(name="TSTATE")
+	private String tstate;
 	
-	@Column(name="T_PRICE")
-	private double t_price;
+	@Min(value = 0, message = "Price can not be negative!")
+	@Column(name="TPRICE")
+	private double tprice;
 	
-	@Column(name="T_DURATION")
-	private double t_duration;
+	@Min(value = 0, message = "Duration in hours can not be negative")
+	@Column(name="TDURATION")
+	private double tduration;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="U_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="UID")
+	@JsonBackReference(value = "user-tasks")
 	private User user;
 	
-	@OneToMany(mappedBy = "task")
+	
+	@OneToMany(mappedBy = "task", orphanRemoval = true)
+	@JsonManagedReference(value = "task-bids")
 	private Set<Bid> bids;
 	
 	
@@ -56,83 +73,83 @@ public class Task {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getT_id() {
-		return t_id;
+	public int getTid() {
+		return tid;
 	}
 
 
-	public void setT_id(int t_id) {
-		this.t_id = t_id;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 
 
-	public String getT_title() {
-		return t_title;
+	public String getTtitle() {
+		return ttitle;
 	}
 
 
-	public void setT_title(String t_title) {
-		this.t_title = t_title;
+	public void setTtitle(String ttitle) {
+		this.ttitle = ttitle;
 	}
 
 
-	public String getT_desc() {
-		return t_desc;
+	public String getTdesc() {
+		return tdesc;
 	}
 
 
-	public void setT_desc(String t_desc) {
-		this.t_desc = t_desc;
+	public void setTdesc(String tdesc) {
+		this.tdesc = tdesc;
 	}
 
 
-	public String getT_street() {
-		return t_street;
+	public String getTstreet() {
+		return tstreet;
 	}
 
 
-	public void setT_street(String t_street) {
-		this.t_street = t_street;
+	public void setTstreet(String tstreet) {
+		this.tstreet = tstreet;
 	}
 
 
-	public String getT_city() {
-		return t_city;
+	public String getTcity() {
+		return tcity;
 	}
 
 
-	public void setT_city(String t_city) {
-		this.t_city = t_city;
+	public void setTcity(String tcity) {
+		this.tcity = tcity;
 	}
 
 
-	public String getT_state() {
-		return t_state;
+	public String getTstate() {
+		return tstate;
 	}
 
 
-	public void setT_state(String t_state) {
-		this.t_state = t_state;
+	public void setTstate(String tstate) {
+		this.tstate = tstate;
 	}
 
 
-	public double getT_price() {
-		return t_price;
+	public double getTprice() {
+		return tprice;
 	}
 
 
-	public void setT_price(double t_price) {
-		this.t_price = t_price;
+	public void setTprice(double tprice) {
+		this.tprice = tprice;
 	}
 
 
-	public double getT_duration() {
-		return t_duration;
+	public double getTduration() {
+		return tduration;
 	}
 
 
-	public void setT_duration(double t_duration) {
-		this.t_duration = t_duration;
+	public void setTduration(double tduration) {
+		this.tduration = tduration;
 	}
 
 	public User getUser() {
@@ -153,9 +170,8 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [t_id=" + t_id + ", t_title=" + t_title + ", t_desc=" + t_desc + ", t_street=" + t_street
-				+ ", t_city=" + t_city + ", t_state=" + t_state + ", t_price=" + t_price + ", t_duration=" + t_duration
-				+ ", user=" + user + "]";
+		return "Task [tid=" + tid + ", ttitle=" + ttitle + ", tdesc=" + tdesc + ", tstreet=" + tstreet
+				+ ", tcity=" + tcity + ", tstate=" + tstate + ", tprice=" + tprice + ", tduration=" + tduration;
 	}
 
 
