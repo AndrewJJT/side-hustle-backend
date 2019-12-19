@@ -86,7 +86,7 @@ public class Bid {
 	@Override
 	public String toString() {
 		return "Bid [id=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + ", bapproved="
-				+ bapproved + ", user=" + user + ", task=" + task + "]";
+				+ bapproved + "]";
 	}
 	public int getId() {
 		return id;
