@@ -13,9 +13,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "BID")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Bid {
 	
 	@Id
