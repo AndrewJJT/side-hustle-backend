@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -26,25 +27,30 @@ public class Task {
 	@Column(name="TID")
 	private int tid;
 	
+	@NotBlank(message = "Job task must have a title!")
 	@Column(name="TTITLE")
 	private String ttitle;
 	
+	@NotBlank(message = "Job task must have a description!")
 	@Column(name="TDESC")
 	private String tdesc;
 	
 	@Column(name="TSTREET")
 	private String tstreet;
 	
+	@NotBlank(message = "City field is required!")
 	@Column(name = "TCITY")
 	private String tcity;
 	
+	@NotBlank(message = "State field is required!")
 	@Column(name="TSTATE")
 	private String tstate;
 	
-	@Min(0)
+	@Min(value = 0, message = "Price can not be negative!")
 	@Column(name="TPRICE")
 	private double tprice;
 	
+	@Min(value = 0, message = "Duration in hours can not be negative")
 	@Column(name="TDURATION")
 	private double tduration;
 	
