@@ -32,6 +32,19 @@ public class Bid {
 	@Column(name="BPRICE")
 	private double bprice;
 	
+	@Column(name="BAPPROVED")
+	private boolean bapproved;
+	
+	public boolean getBapproved() {
+		return bapproved;
+	}
+
+
+	public void setBapproved(boolean bapproved) {
+		this.bapproved = bapproved;
+	}
+
+
 	public User getUser() {
 		return user;
 	}
@@ -70,7 +83,8 @@ public class Bid {
 	
 	@Override
 	public String toString() {
-		return "Bid [id=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + "]";
+		return "Bid [id=" + id + ", btitle=" + btitle + ", bdesc=" + bdesc + ", bprice=" + bprice + ", bapproved="
+				+ bapproved + ", user=" + user + ", task=" + task + "]";
 	}
 	public int getId() {
 		return id;

@@ -41,4 +41,12 @@ public class BidController {
 	public void RemoveBidById(@PathVariable int id) {
 		repository.deleteById(id);
 	}
+	
+	@PostMapping(value = "/bids/approve/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void approve(@PathVariable int id,  @RequestBody Bid bid) {
+		Bid bidFromDb = repository.findById(id).get();
+		bidFromDb.setBapproved(bid.getBapproved());
+		repository.save(bidFromDb);
+	}
+	
 }
