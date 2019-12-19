@@ -35,7 +35,7 @@ public class Bid {
 	private double bprice;
 	
 	@Column(name="BAPPROVED")
-	private boolean bapproved;
+	private boolean bapproved = false;
 	
 	public boolean getBapproved() {
 		return bapproved;
