@@ -55,7 +55,7 @@ public class TaskController {
 	}
 	
 	
-	@PostMapping(value = "/tasks/task/{t_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/tasks/task/update/{t_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Task updateTasksave(@PathVariable int t_id, @RequestBody Task task) {
 		System.out.println("Updating ... ");
 		Task taskFromDb = repository.findById(t_id).get();
