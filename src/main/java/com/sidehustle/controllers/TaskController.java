@@ -3,6 +3,8 @@ package com.sidehustle.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -56,7 +58,7 @@ public class TaskController {
 	
 	
 	@PostMapping(value = "/tasks/task/update/{t_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Task updateTasksave(@PathVariable int t_id, @RequestBody Task task) {
+	public Task updateTasksave(@PathVariable int t_id, @Valid @RequestBody Task task) {
 		System.out.println("Updating ... ");
 		Task taskFromDb = repository.findById(t_id).get();
 		taskFromDb.setTcity(task.getTcity());
