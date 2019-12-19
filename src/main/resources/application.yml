@@ -7,7 +7,7 @@ spring:
   application:
     name: sidehustle-api
   datasource:
-    url: jdbc:mysql://mysql.cuiocgkwktq7.us-east-2.rds.amazonaws.com:3306/sidehustle
+    url: jdbc:mysql://mysql.cntxlqxryeua.us-east-2.rds.amazonaws.com:3306/sidehustle
     username: admin
     password: adminadmin
   jpa:
