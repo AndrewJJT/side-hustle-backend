@@ -66,8 +66,7 @@ public class TaskController {
 		taskFromDb.setTstate(task.getTstate());
 		taskFromDb.setTstreet(task.getTstreet());
 		taskFromDb.setTtitle(task.getTtitle());
-		return repository.save(taskFromDb);
-		
+		return repository.save(taskFromDb);		
 	}
 	
 }
