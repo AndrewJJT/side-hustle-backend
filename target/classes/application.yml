@@ -1,0 +1,16 @@
+#change server port
+server:
+  port: 8080
+
+#set the application name
+spring:
+  application:
+    name: sidehustle-api
+  datasource:
+    url: jdbc:mysql://mysql.cuiocgkwktq7.us-east-2.rds.amazonaws.com:3306/sidehustle
+    username: admin
+    password: adminadmin
+  jpa:
+    hibernate: 
+      ddl-auto: update
+      
