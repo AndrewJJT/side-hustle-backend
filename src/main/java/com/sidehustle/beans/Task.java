@@ -2,6 +2,7 @@ package com.sidehustle.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,9 +17,11 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "TASK")
 public class Task {
 
@@ -60,7 +63,7 @@ public class Task {
 	private User user;
 	
 	
-	@OneToMany(mappedBy = "task")
+	@OneToMany(mappedBy = "task", orphanRemoval = true)
 	@JsonManagedReference(value = "task-bids")
 	private Set<Bid> bids;
 	
