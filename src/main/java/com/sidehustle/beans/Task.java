@@ -2,6 +2,7 @@ package com.sidehustle.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,7 +57,7 @@ public class Task {
 	private User user;
 	
 	
-	@OneToMany(mappedBy = "task")
+	@OneToMany(mappedBy = "task", orphanRemoval = true)
 	@JsonManagedReference(value = "task-bids")
 	private Set<Bid> bids;
 	
